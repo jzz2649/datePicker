@@ -29,7 +29,8 @@ var update = DatePicker(app,//绑定元素(必须)
       callback: function(date){}})//回调函数,参数date是一个包含year，month，date的时间对象(可选)
 ```
 如果option是方法，赋值给options的callback方法
-DatePicker方法返回的是一个update方法，用于更新currentDate属性，格式('2017-03-15')
+
+DatePicker方法返回的是一个update方法，用于更新currentDate属性，格式update('2017-03-15')
 
 ##说明
 有问题，欢迎提出

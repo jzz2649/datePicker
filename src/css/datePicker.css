@@ -1,0 +1,117 @@
+/* version1.0 */
+.datetime a {
+  text-decoration: none;
+}
+
+.datetime * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.datetime {
+  position: relative;
+  max-width: 244px;
+  margin: 0 auto;
+  color: #484848;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.datetime table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.date-header {
+  padding: 15px;
+}
+
+.date-prev,
+.date-next {
+  padding: 7px 20px;
+  margin: -4px -20px; 
+  cursor: pointer;
+}
+
+.date-prev {
+  float: left;
+}
+
+.date-next {
+  float: right;
+}
+
+.date-prev:after,
+.date-next:after {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-size: 10px 22px;
+  background-repeat: no-repeat;
+}
+
+.date-prev:after {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAWCAYAAAD5Jg1dAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAAItJREFUOE+Nk1sNgDAQBAsYQEIlIAUJSEAKEpCABCQgBQnc9MHfPSbZsA0bym0hBclDMxa76B2rV9lEs+gsK4VFZAaA0F2tDltd7arCTZ6Uy8qAd2JbE0JrtTrUgEwIuDV4hf9MokfEtAyBdwkN0zlEbj0QLhxCR9gJfRQdwm6/HQ6DAVP4V6jWJeUPdLATGoxdx+cAAAAASUVORK5CYII=');
+}
+
+.date-next:after {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAWCAYAAAD5Jg1dAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAACBSURBVCiRjdIxFQIxFETRy64BJERCJCABCSsBCUigpIwEJEQCJXIoNgUUkHlNmncmmf8DRcCCEy6JDDdsqdxQU7mn8hGPcU4pIzmSq71gxNleEKx/xNe4vuJ5CJIb+pK+Y8Ym2NhXmV/URCqCgccr7IJP0RLpajKG9UO4z9LKTIA3Bv8SPMozejgAAAAASUVORK5CYII=');
+}
+
+.date-title {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.datetime th {
+  font-size: 12px;
+  color: #767676;
+  text-align: center;
+}
+
+.datetime td {
+  padding: 0;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid #ccc;
+}
+
+.date-month {
+  margin-left: 5px;
+}
+
+.date-select, .unselect {
+  display: block;
+  padding: 6px 0;
+}
+
+.date-select {
+  cursor: pointer;
+}
+
+.unselect {
+  color: #dce0e0;
+  cursor: default;
+}
+
+.date-select,
+.date-select:hover,
+.date-select:active {
+  color: #484848;
+}
+
+.is-active.date-select,
+.is-active.date-select:hover,
+.is-active.date-select:active {
+  color: #fff;
+}
+
+.is-active {
+  color: #fff;
+  background: #0076EE;
+}

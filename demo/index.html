@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>datePicker</title>
+  <link rel="stylesheet" href="../src/css/datePicker.css">
+  <style>
+    #showtime {
+      padding-left: 10px;
+      width: 140px;
+      height: 34px;
+      margin: 0 auto;
+      line-height: 34px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+      color: #666;
+      cursor: pointer;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAOAQMAAAALw54AAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURQAAAGBgYMX/eBAAAAABdFJOUwBA5thmAAAAQElEQVQI1xXKwQmAMABD0ScevIgTlM7RmysVXKCjdZS6iRGSDwnfZFq2qduH5qC4JEVGk7uLsPBG94zgTtUfJx+smAp4mMP5gQAAAABJRU5ErkJggg==);
+      background-size: 14px 8px;
+      background-position: right 17px center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+<div style="text-align: center;margin: 20px;">
+  <input id="date" type="text" value="2017-03-02">
+  <button id="update">update</button>
+</div>
+<div id="showtime"></div>
+<div id="app" style="display: none;"></div>
+  <script src="../src/js/datePicker.js"></script>  
+  <script>
+    var app = document.getElementById('app');
+    var input = document.getElementById('date');
+    var btn = document.getElementById('update');
+    var showtime = document.getElementById('showtime');
+    var update = DatePicker(app,
+      {startDate: '2017-02-21',
+      endDate: '2017-04-15',
+      currentDate: '2017-03-15',
+      disabled: false,
+      callback: function(date){
+      showtime.textContent = date.year + '-' + date.month + '-' + date.date
+    }});
+    showtime.addEventListener('click', function(e){
+      if (app.style.display == 'none') {
+        app.style.display = 'block';
+      } else {
+        app.style.display = 'none';
+      }
+    });
+    btn.addEventListener('click', function(e){
+      update(input.value);
+    });
+  </script>
+</body>
+</html>

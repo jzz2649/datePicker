@@ -88,21 +88,13 @@
       var isSpan = false;
       if (n !== 0) {
         if (params.startDate) {
-          if (title.year == sdate[0] && title.month == sdate[1] && n < sdate[2]) {
-            isSpan = true;
-          } else if (title.year == sdate[0] && title.month < sdate[1]) {
-            isSpan = true;
-          } else if (title.year < sdate[0]) {
+          if (isOverdue([title.year, title.month, n], sdate, true)) {
             isSpan = true;
           }
         }
 
         if (params.endDate) {
-          if (title.year == edate[0] && title.month == edate[1] && n > edate[2]) {
-            isSpan = true;
-          } else if (title.year == edate[0] && title.month > edate[1]) {
-            isSpan = true;
-          } else if (title.year > sdate[0]) {
+          if (isOverdue([title.year, title.month, n], edate, false)) {
             isSpan = true;
           }
         }
@@ -176,7 +168,7 @@
       var monthEl = createEl('span', 'date-month');
       var tableBoxEl = createEl('div');
 
-      var datePicker = function (year, month) {
+      var handle = function (year, month) {
         tableBoxEl.innerHTML = ''
         var date = new Date(year, month - 1, 1);
         var table = setTable(getMonth(year, month).day, date.getDay());
@@ -191,7 +183,7 @@
           datetime[2] = parseInt(datetime[2]);
 
           if (params.startDate) {
-            if (datetime[0] <= sdate[0] && datetime[1] <= sdate[1] && datetime[2] < sdate[2]) {
+            if (isOverdue(datetime, sdate, true)) {
               datetime[0] = state.year;
               datetime[1] = state.month;
               datetime[2] = state.date;
@@ -199,7 +191,7 @@
           }
 
           if (params.endDate) {
-            if (datetime[0] >= edate[0] && datetime[1] >= edate[1] && datetime[2] > edate[2]) {
+            if (isOverdue(datetime, edate, false)) {
               datetime[0] = state.year;
               datetime[1] = state.month;
               datetime[2] = state.date;
@@ -209,7 +201,9 @@
           title.month = state.month = parseInt(datetime[1]);
           title.date = state.date = parseInt(datetime[2]);  
         }
-        datePicker(title.year, title.month);
+        yearEl.textContent = title.year;
+        monthEl.textContent = getMonth(title.year, title.month).month;
+        handle(title.year, title.month);
       }
 
       yearEl.textContent = title.year;
@@ -264,7 +258,7 @@
           }
 
           monthEl.textContent = getMonth(title.year, title.month).month;
-          datePicker(title.year, title.month);
+          handle(title.year, title.month);
         }
       });
       el.appendChild(boxEl);
@@ -279,6 +273,27 @@
       el.className = className;
     }
     return el;
+  }
+
+  function isOverdue (cdate, odate, type) {
+    if (type) {
+      if (cdate[0] == odate[0] && cdate[1] == odate[1] && cdate[2] < odate[2]) {
+        return true;
+      } else if (cdate[0] == odate[0] && cdate[1] < odate[1]) {
+        return true;
+      } else if (cdate[0] < odate[0]) {
+        return true;
+      }   
+    } else {
+      if (cdate[0] == odate[0] && cdate[1] == odate[1] && cdate[2] > odate[2]) {
+        return true;
+      } else if (cdate[0] == odate[0] && cdate[1] > odate[1]) {
+        return true;
+      } else if (cdate[0] > odate[0]) {
+        return true;
+      }     
+    }
+    return false;
   }
 
   function getMonth (year, Month) {

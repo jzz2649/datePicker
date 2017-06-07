@@ -297,46 +297,9 @@
   }
 
   function getMonth (year, Month) {
-    switch (Month) {
-      case 1:
-        return {day: 31, month: '一月'}
-        break;
-      case 2:
-        return {day: (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? 29 : 28, month: '二月'}
-        break;
-      case 3:
-        return {day: 31, month: '三月'}
-        break;
-      case 4:
-        return {day: 30, month: '四月'}
-        break;
-      case 5:
-        return {day: 31, month: '五月'}
-        break;
-      case 6:
-        return {day: 30, month: '六月'}
-        break;
-      case 7:
-        return {day: 31, month: '七月'}
-        break;
-      case 8:
-        return {day: 31, month: '八月'}
-        break;
-      case 9:
-        return {day: 30, month: '九月'}
-        break;
-      case 10:
-        return {day: 31, month: '十月'}
-        break;
-      case 11:
-        return {day: 30, month: '十一月'}
-        break;
-      case 12:
-        return {day: 31, month: '十二月'}
-        break;
-      default:
-        break;
-    }
+    var day = new Date(year, Month, 0).getDate();
+    var monthTitle = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    return {day: day, month: monthTitle[Month-1]};
   }
 
   return DatePicker;
